@@ -1,0 +1,44 @@
+{% extends "PIAppelBundle:Default:index.html.twig" %}
+{% block container %}
+    <form method="post">
+    Mes Appels :
+    <input type="submit" name="submit" value="recherche">
+
+    <table id="simple-table" class="table  table-bordered table-hover">
+    <thead>
+<tr>
+    <th>Patisserie</th>
+    <th>Sujet</th>
+    <th>Description</th>
+    <th>Etat</th>
+    <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>Date limite</th>
+    <th>Action</th>
+
+    {% for appels in a%}
+    <tr>
+        <td>{{ appels.patisserie.name }}</td>
+        <td>{{ appels.sujet }}</td>
+        <td>{{ appels.description }}</td>
+        <td>
+            {% if appels.statut == 0  %}
+
+                En attend
+            {% else %}
+                Confirmé
+
+            {% endif %}
+
+
+        </td>
+        <td>{{ appels.datemax|date('Y-m-d H:i:s')   }}</td>
+
+
+        <td>
+            {% if appels.patisserie != user  %}
+                <a href="{{ path ('participer',{'id':appels.id}) }}"> Participer </a>
+            {% endif %}</td>
+    </tr>
+
+    {% endfor %}
+
+{% endblock %}

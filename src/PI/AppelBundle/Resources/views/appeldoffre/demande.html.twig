@@ -1,0 +1,27 @@
+{% extends "PIAppelBundle:Default:index.html.twig" %}
+{% block container %}
+    <table id="simple-table" class="table  table-bordered table-hover">
+                        <thead>
+                        <tr>
+    <th>Sujet Appel</th>
+    <th>Etat</th>
+    <th>Patisserie</th>
+
+                            <th>Action</th>
+
+{% for appels in a%}
+    <tr>
+        <td>{{ appels.appel.sujet }}</td>
+        <td>{{ appels.statut }}</td>
+        <td>{{ appels.user.name }}</td>
+
+                  <td>
+
+                      <a href="{{ path ('confirmer',{'id':appels.id}) }}"> Confirmer </a>
+                      <a href="{{ path ('annuler',{'id':appels.id}) }}"> Annuler </a>
+    </td>
+    </tr>
+
+{% endfor %}
+
+{% endblock %}

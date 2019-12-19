@@ -1,0 +1,31 @@
+{% extends "PIAppelBundle:Default:index.html.twig" %}
+{% block container %}
+    <table id="simple-table" class="table  table-bordered table-hover">
+    <thead>
+<tr>
+    <th>Sujet</th>
+    <th>Description</th>
+    <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>Date limite</th>
+    <th>Validation</th>
+    <th>Status</th>
+    {% for appels in a%}
+    <tr>
+
+        <td>{{ appels.sujet }}</td>
+        <td>{{ appels.description }}</td>
+        <td>{{ appels.datemax|date }}</td>
+
+
+
+
+        <td>
+            <span class="label label-sm label-inverse arrowed-in">Marqué</span>
+            <button class="btn btn-xs btn-warning">
+                <i class="ace-icon fa fa-flag bigger-120"></i>
+            </button>
+        </td>
+
+    </tr>
+    {% endfor %}
+
+{% endblock %}

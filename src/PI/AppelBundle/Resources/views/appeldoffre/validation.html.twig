@@ -1,0 +1,51 @@
+{% extends "PIAppelBundle:Default:index.html.twig" %}
+{% block container %}
+    <table id="simple-table" class="table  table-bordered table-hover" xmlns="http://www.w3.org/1999/html">
+    <thead>
+<tr>
+    <th>Sujet</th>
+    <th>Description</th>
+    <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>Date limite</th>
+    <th>Participer</th>
+    <th>Status</th>
+    {% for appels in a%}
+    <tr>
+
+        <td>{{ appels.sujet }}</td>
+        <td>{{ appels.description }}</td>
+        <td>{{ appels.datemax|date }}</td>
+
+
+
+
+        <td> <a href="{{ path ('_valide',{'id':appels.id}) }}">  <button class="btn btn-xs btn-success">
+                    <i class="ace-icon fa fa-check bigger-120"></i>
+                </button>
+            </a>
+            <button class="btn btn-xs btn-warning">
+                <i class="ace-icon fa fa-flag bigger-120"></i>
+            </button>
+        </td>
+
+        <td class="hidden-480">
+
+            <span class="label label-sm label-warning">Expiré</span>
+        </td>
+        <td> <a href="{{ path ('pi_offre_appeloffre',{'id':appels.id}) }}">  <button class="btn btn-minier btn-primary dropdown-toggle">
+                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                </button></a>
+            <span class="label label-sm label-inverse arrowed-in">Marqué</span>
+        </td>
+        <td class="hidden-480">
+            <span class="label label-sm label-success">Enregistré</span>
+        </td>
+    </tr>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "PIAppelBundle:appeldoffre:validation.html.twig" %}
+{% block container %}
+    <table id="simple-table" class="table  table-bordered table-hover">
+    <thead>
+<tr>
+    <th>Sujet</th>
+    <th>Description</th>
+    <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>Date limite</th>
+    <th>Validation</th>
+    <th>Status</th>
+    {% for appels in a%}
+    <tr>
+
+        <td>{{ appels.sujet }}</td>
+        <td>{{ appels.description }}</td>
+        <td>{{ appels.datemax|date }}</td>
+
+        {% block valide  %}
+            <td class="hidden-480">
+                <span class="label label-sm label-success">Validé</span>
+            </td>
+        {% endblock %}
+
+    </tr>
+    {% endfor %}
+
+{% endblock %}

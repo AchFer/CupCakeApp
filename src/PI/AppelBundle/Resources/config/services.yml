@@ -1,0 +1,4 @@
+services:
+#    pi_appel.example:
+#        class: PI\AppelBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

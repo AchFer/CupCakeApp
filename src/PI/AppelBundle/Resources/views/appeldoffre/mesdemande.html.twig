@@ -1,0 +1,42 @@
+{% extends "PIAppelBundle:Default:index.html.twig" %}
+{% block container %}
+    <table id="simple-table" class="table  table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Sujet Appel</th>
+                            <th>Etat</th>
+
+                            <th>Action</th>
+
+{% for appels in a%}
+    <tr>
+                               <td>{{ appels.appel.sujet }}</td>
+
+
+                               <td>
+                                   {% if appels.statut == 0  %}
+
+                                       En attend
+                                   {% elseif(appels.statut == 1 ) %}
+                                       Confirmé
+                                   {% else %}
+
+                                       Annulé
+                                   {% endif %}
+
+
+
+                               </td>
+
+
+
+
+                  <td>
+
+                      <a href="{{ path ('annulerdem',{'id':appels.id}) }}"> Annuler </a>
+   </td>
+    </tr>
+
+{% endfor %}
+
+{% endblock %}

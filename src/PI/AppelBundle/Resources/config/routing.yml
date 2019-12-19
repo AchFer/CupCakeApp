@@ -1,0 +1,44 @@
+pi_appel_homepage:
+    path:     /
+    defaults: { _controller: PIAppelBundle:Default:index }
+
+pi_ajout_appeloffre:
+    path:     /ajout
+    defaults: { _controller: PIAppelBundle:appeldoffre:Ajout}
+pi_affiche_appeloffre2:
+    path:     /affiche
+    defaults: { _controller: PIAppelBundle:appeldoffre:Affiche}
+pi_affiche_alloffer:
+    path:     /toutappel
+    defaults: { _controller: PIAppelBundle:appeldoffre:Afficheall}
+_update:
+    path:     /update/{id}
+    defaults: { _controller: PIAppelBundle:appeldoffre:Update }
+_Delete:
+    path:     /Delete/{id}
+    defaults: { _controller: PIAppelBundle:appeldoffre:Delete }
+participer:
+    path:     /{id}/participer
+    defaults: { _controller: PIAppelBundle:appeldoffre:participer}
+mesdemande:
+    path:     /mesdemande
+    defaults: { _controller: PIAppelBundle:appeldoffre:mesdemande}
+demande:
+    path:     /demande
+    defaults: { _controller: PIAppelBundle:appeldoffre:demande}
+confirmer:
+    path:     /{id}/confirmer
+    defaults: { _controller: PIAppelBundle:appeldoffre:confirmer}
+annuler:
+    path:     /{id}/annuler
+    defaults: { _controller: PIAppelBundle:appeldoffre:annuler}
+annulerdem:
+    path:     /{id}/annulerdem
+    defaults: { _controller: PIAppelBundle:appeldoffre:annulerdem}
+
+_grapheChartLine:
+    path: /chartLine
+    defaults: { _controller: PIAppelBundle:Graphe:chartLine }
+_recherche:
+    path: /search
+    defaults: { _controller: PIAppelBundle:appeldoffre:recherche }

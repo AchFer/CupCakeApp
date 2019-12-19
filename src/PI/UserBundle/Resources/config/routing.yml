@@ -1,0 +1,3 @@
+pi_affiche_appeloffre:
+    path:     /
+    defaults: { _controller: PIAppelBundle:appeldoffre:Affiche }

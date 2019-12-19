@@ -1,0 +1,118 @@
+{% extends "PIAppelBundle:Default:index.html.twig" %}
+
+{% block head %}
+    <head>
+
+        <link rel="stylesheet" href="{{ asset('Formvalidation/formValidation.css')}}"/>
+        <link rel="stylesheet" href="{{ asset('Formvalidation/bootstrap.css')}}"/>
+        <script type="text/javascript" src="{{ asset('Formvalidation/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('Formvalidation/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('Formvalidation/formValidation.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('Formvalidation/bootstrap.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('lobibox/dist/css/lobibox.min.css') }}"/>
+        <script src="{{ asset('lobibox/lib/jquery.1.11.min.js') }}"></script>
+        <script src="{{ asset('lobibox/dist/js/lobibox.min.js') }}"></script>
+    </head>
+{% endblock %}
+{% block container %}
+
+    {{ form_start(f , {'attr': {'onsubmit':'return controle();' }}) }}
+
+
+
+    <div class="main-container ace-save-state" id="main-container">
+        <div class="page-content">
+            <div class="main-content">
+                <div class="main-content-inner">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Sujet </label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(f.sujet ,{ 'attr':{'class': 'col-xs-10 col-sm-5'}} ) }}
+                                </div>
+                            </div><br><br>
+
+
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> DataMaximal </label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(f.datemax ,{ 'attr':{'class': 'col-xs-10 col-sm-5'}} ) }}
+                                </div>
+                            </div><br><br>
+
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Description </label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(f.description ,{ 'attr':{'class': 'col-xs-10 col-sm-5'}} ) }}
+                                </div>
+                            </div><br><br>
+
+
+
+                            <div class="form-group">
+                                <div class="clearfix form-actions">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        {{ form_widget(f.valider,{ 'attr':{'class': 'btn btn-info'}} ) }}
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(f) }}
+
+
+{% endblock %}
+
+
+{% block javascript %}
+    <script>
+    function controle() {
+    if (document.getElementById("pi_appelbundle_appeldoffre_sujet").value.length < 6){
+    Lobibox.notify('error',
+    {
+    rounded: true,
+    msg: "la sujet de la recette doit contenir au moins 6 lettres"
+    });
+    return false;
+    }
+    if (document.getElementById('forumbundle_recette_duree').value < 1){
+    Lobibox.notify('error',
+    {
+    rounded: true,
+    msg: "duree doit etre positive"
+    });
+    return false;
+    }
+    if (document.getElementById('forumbundle_recette_besoin').value.length < 6){
+    Lobibox.notify('error',
+    {
+    rounded: true,
+    msg: "l adresse doit contenir au moins 6 lettres"
+    });
+    return false;
+    }
+    if (!document.getElementById('date').value < date('Y-m-d H:i:s') ){
+    Lobibox.notify('error',
+    {
+    rounded: true,
+    msg: "vous devez selectionez une date"
+    });
+    return false;
+    }
+    return true;
+    }
+    </script>
+{% endblock %}

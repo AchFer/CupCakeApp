@@ -1,0 +1,29 @@
+{% extends "PIAppelBundle:Default:index.html.twig" %}
+{% block container %}
+    <table id="simple-table" class="table  table-bordered table-hover">
+                        <thead>
+                        <tr>
+
+                            <th>Sujet</th>
+                            <th>Description</th>
+                           <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>Date limite</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+{% for appels in a%}
+    <tr>
+
+                               <td>{{ appels.sujet }}</td>
+                               <td>{{ appels.description }}</td>
+                               <td>{{ appels.datemax|date('Y-m-d H:i:s')   }}</td>
+
+                  <td> <a href="{{ path ('_update',{'id':appels.id}) }}">  <button class="btn btn-xs btn-info">
+                              <i class="ace-icon fa fa-pencil bigger-120"></i>
+                          </button></a></td>
+                  <td> <a href="{{ path ('_Delete',{'id':appels.id}) }}"><button class="btn btn-xs btn-danger">
+                              <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                          </button> </a></td>
+    </tr>
+
+{% endfor %}
+
+{% endblock %}
